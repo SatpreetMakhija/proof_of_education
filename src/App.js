@@ -1,10 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { ethers } from "ethers";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Greeter from "./artifacts/contracts/Greeter.sol/Greeter.json";
 
 //import React components
 import Home from "./Components/Pages/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import UploadDoc from './Components/Pages/UploadDoc'
+//import React-bootstrap elements
+import { Button } from "react-bootstrap";
+import NavigationBar from "./Components/Shared Elements/Navbar";
+import ValidateDoc from "./Components/Pages/ValidateDoc";
 
 const greeterAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
 
@@ -48,18 +55,31 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Home />
-      <header className="App-header">
-        <button onClick={fetchGreeting}>Fetch Greeting</button>
-        <button onClick={setGreeting}>Set Greeting</button>
-        <input
-          onChange={(e) => setGreetingValue(e.target.value)}
-          placeholder="Set greeting"
-          value={greeting}
-        />
-      </header>
-    </div>
+    <React.Fragment>
+      <div className="App">
+        
+        {/* <header className="App-header">
+          <button onClick={fetchGreeting}>Fetch Greeting</button>
+          <button onClick={setGreeting}>Set Greeting</button>
+          <input
+            onChange={(e) => setGreetingValue(e.target.value)}
+            placeholder="Set greeting"
+            value={greeting}
+          />
+        
+        </header> */}
+        <Router>
+        <NavigationBar/>
+          <Routes>
+            <Route  path="/" element={<Home/>}/>
+            <Route path="/upload-doc" element={<UploadDoc/>}/>
+            <Route path="/validate-doc" element={<ValidateDoc/>}/>
+          </Routes>
+        </Router>
+
+
+      </div>
+    </React.Fragment>
   );
 }
 
