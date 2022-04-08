@@ -12,6 +12,7 @@ import UploadDoc from './Components/Pages/UploadDoc'
 import { Button } from "react-bootstrap";
 import NavigationBar from "./Components/Shared Elements/Navbar";
 import ValidateDoc from "./Components/Pages/ValidateDoc";
+import Login from "./Components/Pages/Login";
 
 const greeterAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
 
@@ -74,6 +75,7 @@ function App() {
             <Route  path="/" element={<Home/>}/>
             <Route path="/upload-doc" element={<UploadDoc/>}/>
             <Route path="/validate-doc" element={<ValidateDoc/>}/>
+            <Route path="/login" element={<Login/>}/>
           </Routes>
         </Router>
 
