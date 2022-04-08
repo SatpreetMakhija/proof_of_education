@@ -17,10 +17,10 @@ export const loginSlice = createSlice({
             state.isUserLoggedIn = false;
         },
         setAddressOfUser: (state, action) => {
-            state.setAddress = action.payload
+            state.address = action.payload
         },
     },
 })
 
-export const { loginUser, logoutUser, setAddress} = loginSlice.actions
+export const { loginUser, logoutUser, setAddressOfUser} = loginSlice.actions
 export default loginSlice.reducer;
