@@ -23,7 +23,7 @@ const greeterAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
 function App() {
   
   const isUserLoggedIn = useSelector((state) => state.login.isUserLoggedIn);
-  
+  console.log(isUserLoggedIn)
   // const [greeting, setGreetingValue] = useState("");
 
   // async function requestAccount() {
