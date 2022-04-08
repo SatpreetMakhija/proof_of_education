@@ -1,8 +1,14 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../../features/login/loginSlice";
+
 const NavigationBar = () => {
+
+  const isUserLoggedIn = useSelector((state) => state.login.isUserLoggedIn)
+  const dispatch = useDispatch()
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -15,9 +21,10 @@ const NavigationBar = () => {
             <Nav.Link as={Link} to="/validate-doc">
               Validate Document
             </Nav.Link>
-            <Nav.Link as={Link} to="/login">
+            {!isUserLoggedIn && <Nav.Link as={Link} to="/login">
               Login
-            </Nav.Link>
+            </Nav.Link>}
+            {isUserLoggedIn && <Button onClick={() => dispatch(logoutUser())}>Logout</Button>}
           </Nav>
         </Container>
       </Navbar>
