@@ -5,7 +5,8 @@ export const loginSlice = createSlice({
     name: 'login',
     initialState: 
         {
-            isUserLoggedIn: false
+            isUserLoggedIn: false,
+            address: undefined,
         }
     ,
     reducers: {
@@ -15,8 +16,11 @@ export const loginSlice = createSlice({
         logoutUser: (state) => {
             state.isUserLoggedIn = false;
         },
+        setAddressOfUser: (state, action) => {
+            state.address = action.payload
+        },
     },
 })
 
-export const { loginUser, logoutUser } = loginSlice.actions
+export const { loginUser, logoutUser, setAddressOfUser} = loginSlice.actions
 export default loginSlice.reducer;
