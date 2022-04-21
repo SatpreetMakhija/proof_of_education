@@ -18,6 +18,7 @@ contract FileUpload {
     function setDocHash(string memory _docHash) public {
         console.log("Changing greeting from '%s' to '%s'", docHash, _docHash);
         docHash = _docHash;
+        console.log(docHash);
     }
 }
 
