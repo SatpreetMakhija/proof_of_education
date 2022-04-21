@@ -28,13 +28,21 @@ import React from "react";
  function FileUpload() {
     // State to store uploaded file
     const [file, setFile] = React.useState("");
-  
+
+    const UploadDocAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+
+
     // Handles file upload event and updates state
     function handleUpload(event) {
       setFile(event.target.files[0]);
   
       // Add code here to upload file to server
       // ...
+      console.log("The uploaded file is")
+      setFile("helo")
+      console.log(file);
+
+
     }
   
     return (
