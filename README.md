@@ -15,5 +15,5 @@ npx hardhat help
 ```
 
 npx hardhat node
-npx hardhat run script/deploy.js --notwork localhost
+npx hardhat run scripts/deploy.js --network localhost
 npm start
