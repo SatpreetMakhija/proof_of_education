@@ -1,9 +1,71 @@
 import React from "react";
+// const crypto  = require('crypto');
+// const fs = require('fs');
 
-const UploadDoc = () => {
+// function hash(file){
+//     const h = crypto.createHash('sha256');
+//     h.update(file);
+//     const hex = h.digest('hex');
+//     console.log(hex)
+
+// }
+
+
+// hash('helloworld')
+// const UploadDoc = () => {
+//     return (
+//         <h1>This is the Upload Document Page</h1>
+//     )
+// }
+
+// export default UploadDoc;
+
+
+/**
+ * Component to handle file upload. Works for image
+ * uploads, but can be edited to work for any file.
+ */
+ function FileUpload() {
+    // State to store uploaded file
+    const [file, setFile] = React.useState("");
+
+    const UploadDocAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+
+
+    // Handles file upload event and updates state
+    function handleUpload(event) {
+      setFile(event.target.files[0]);
+  
+      // Add code here to upload file to server
+      // ...
+      console.log("The uploaded file is")
+      setFile("helo")
+      console.log(file);
+
+
+    }
+  
     return (
-        <h1>This is the Upload Document Page</h1>
-    )
-}
+      <div id="upload-box">
+        <input type="file" onChange={handleUpload} />
+        <p>Filename: {file.name}</p>
+        <p>File type: {file.type}</p>
+        <p>File size: {file.size} bytes</p>
+        {file && <ImageThumb image={file} />}
+      </div>
+    );
+  }
+  
+  /**
+   * Component to display thumbnail of image.
+   */
+  const ImageThumb = ({ image }) => {
+    return <img src={URL.createObjectURL(image)} alt={image.name} />;
+  };
+  
+  
+  export default function App() {
+    return <FileUpload />;
+  }
 
-export default UploadDoc;
+

@@ -18,7 +18,7 @@ import Login from "./Components/Pages/Login";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, logoutUser } from "./features/login/loginSlice";
 
-const greeterAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+const greeterAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 function App() {
   

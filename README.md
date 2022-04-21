@@ -13,3 +13,7 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+npx hardhat node
+npx hardhat run script/deploy.js --notwork localhost
+npm start
