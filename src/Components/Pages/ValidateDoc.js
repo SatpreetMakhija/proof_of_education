@@ -43,19 +43,7 @@ const verifyMessage = async (_message, _txHash ) => {
       console.log("Error: ", err);
     }
   }
-  // try {
-  //   // const signerAddr = await ethers.utils.verifyMessage(message, signature);
-  //   const provider = new ethers.providers.Web3Provider(window.ethereum);
-    
-  //   if (signerAddr !== address) {
-  //     return false;
-  //   }
-
-  //   return true;
-  // } catch (err) {
-  //   console.log(err);
-  //   return false;
-  // }
+ 
 };
 
 export default function VerifyMessage() {
@@ -107,15 +95,6 @@ export default function VerifyMessage() {
                 placeholder="txHash"
               />
             </div>
-            {/* <div className="my-3">
-              <input
-                required
-                type="text"
-                name="address"
-                className="textarea w-full input input-bordered focus:ring focus:outline-none"
-                placeholder="Signer address"
-              />
-            </div> */}
           </div>
         </main>
         <footer className="p-4">

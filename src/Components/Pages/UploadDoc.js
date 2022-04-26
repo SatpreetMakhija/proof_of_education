@@ -10,25 +10,6 @@ var txDecoder = require('ethereum-tx-decoder');
 const UploadDoc = () => {
   
 
-//=======Code to parse transaction data to get the input to the function of smart contract called=======/
-//   function hex_to_ascii(str1)
-//  {
-// 	var hex  = str1.toString();
-// 	var str = '';
-// 	for (var n = 0; n < hex.length; n += 2) {
-// 		str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
-// 	}
-// 	return str;
-//  }
-// const inputData = hex_to_ascii(data.slice(10));
-        // console.log(inputData.length)
-
-        // const inputData1 = ethers.utils.defaultAbiCoder.decode("string", data.slice(10));
-        // console.log(inputData1)
-        // console.log(inputData1.length);
-  
-//=======Code to parse transaction data to get the input to the function of smart contract called=======/
-
   const userAddress = useSelector((state) => state.login.address)
   const FileUploadAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
   async function uploadSig() {
