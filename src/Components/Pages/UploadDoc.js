@@ -41,16 +41,23 @@ const UploadDoc = () => {
         signer
       );
       try {
-        const tx = await contract.setDocHash("thiss the new sig");
-        const receipt = await tx.wait()
-        console.log(receipt.transactionHash);
-        const txHash = receipt.transactionHash;
-        const transaction = await provider.getTransaction(txHash);
-        const data = transaction.data;
 
-        const iface = new ethers.utils.Interface(FileUpload.abi);
-        const inputToSetDocHash = iface.decodeFunctionData("setDocHash", data)[0]
-        console.log(inputToSetDocHash.length)
+        console.log(typeof(await signer.getAddress()))
+        const msgToSign = "I am the new signature";
+        const signature = signer.signMessage(msgToSign);
+        const signerAddress = signer.getAddress()
+        const tx = await contract.setDocHash(signature, signerAddress);
+        const receipt = await tx.wait()
+        // console.log(receipt.transactionHash);
+        // user needs to save txHash value for verification
+        const txHash = receipt.transactionHash;
+        console.log("The transaction hash is ", txHash);
+        // const transaction = await provider.getTransaction(txHash);
+        // const data = transaction.data;
+
+        // const iface = new ethers.utils.Interface(FileUpload.abi);
+        // const inputToSetDocHash = iface.decodeFunctionData("setDocHash", data)[0]
+        // console.log(inputToSetDocHash)
 
       } catch (err) {
         console.log("Error: ", err);
