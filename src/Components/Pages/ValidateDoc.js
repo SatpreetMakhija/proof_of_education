@@ -57,10 +57,32 @@ export default function VerifyMessage() {
   const handleVerification = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-  
+    // const file = new FormData(e.target.files);
     // setSuccessMsg();
     // setError();
-    const isValid = await verifyMessage(data.get("message"),data.get("txHash"));
+    const file = data.get("message");
+    const fileContents = await readToText(file);
+    const hash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(fileContents))
+    console.log("hash", hash)
+
+    async function readToText(file) {
+
+      const temporaryFileReader = new FileReader();
+  
+      return new Promise((resolve, reject) => {
+          temporaryFileReader.onerror = () => {
+              temporaryFileReader.abort();
+              reject(new DOMException("Problem parsing input file."));
+          };
+  
+          temporaryFileReader.onload = () => {
+              resolve(temporaryFileReader.result);
+          };
+          temporaryFileReader.readAsBinaryString(file);
+      });
+  
+    }; 
+    const isValid = await verifyMessage(hash,data.get("txHash"));
 
     if (isValid) {
       setSuccessMsg("Signature is valid!");
@@ -78,12 +100,11 @@ export default function VerifyMessage() {
           </h1>
           <div className="">
             <div className="my-3">
-              <textarea
+              <input
                 required
-                type="text"
+                type="file"
                 name="message"
                 className="textarea w-full h-24 textarea-bordered focus:ring focus:outline-none"
-                placeholder="Message"
               />
             </div>
             <div className="my-3">

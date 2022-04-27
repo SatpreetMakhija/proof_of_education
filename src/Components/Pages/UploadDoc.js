@@ -8,11 +8,44 @@ var txDecoder = require('ethereum-tx-decoder');
 
 
 const UploadDoc = () => {
-  
+  const [file, setFile] = useState('')
 
   const userAddress = useSelector((state) => state.login.address)
   const FileUploadAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
-  async function uploadSig() {
+  async function uploadSig(e) {
+
+    // Handelling file upload and hashing  ///////////////////
+
+    setFile(e.target.files[0])
+    console.log("state: ",e.target.files[0])
+    const fileContents = await readToText(e.target.files[0])
+    const hash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(fileContents))
+    console.log("hash", hash)
+
+    async function readToText(file) {
+
+      const temporaryFileReader = new FileReader();
+  
+      return new Promise((resolve, reject) => {
+          temporaryFileReader.onerror = () => {
+              temporaryFileReader.abort();
+              reject(new DOMException("Problem parsing input file."));
+          };
+  
+          temporaryFileReader.onload = () => {
+              resolve(temporaryFileReader.result);
+          };
+          temporaryFileReader.readAsBinaryString(file);
+      });
+  
+    }; 
+    
+
+    // Handelling file upload and hashing  ///////////////////
+
+
+
+
     if (typeof window.ethereum !== "undefined") {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
@@ -24,7 +57,7 @@ const UploadDoc = () => {
       try {
 
         console.log(typeof(await signer.getAddress()))
-        const msgToSign = "I am the new signature";
+        const msgToSign = hash;
         const signature = signer.signMessage(msgToSign);
         const signerAddress = signer.getAddress()
         const tx = await contract.setDocHash(signature, signerAddress);
@@ -48,9 +81,17 @@ const UploadDoc = () => {
 
 
   return (
-    <p>
-      <button onClick={uploadSig}>Set sig</button>
-    </p>
+    <form> 
+    <div style={{
+      display:'flex',
+      justifyContent:'center', 
+      alignItems: 'center', 
+      height: "100vh",
+    }}>
+      <input type="file" onChange={uploadSig}/>
+      <button type="submit"> Send it </button>
+    </div>
+  </form>
   )
 };
 
