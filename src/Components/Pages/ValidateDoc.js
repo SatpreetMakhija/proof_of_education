@@ -82,7 +82,8 @@ export default function VerifyMessage() {
       });
   
     }; 
-    const isValid = await verifyMessage(hash,data.get("txHash"));
+    const txn_decoded = window.atob(data.get("txHash"));
+    const isValid = await verifyMessage(hash,txn_decoded);
 
     if (isValid) {
       setSuccessMsg("Signature is valid!");

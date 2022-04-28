@@ -8,7 +8,10 @@ var txDecoder = require('ethereum-tx-decoder');
 
 
 const UploadDoc = () => {
-  const [file, setFile] = useState('')
+  const [error, setError] = useState();
+  const [successMsg, setSuccessMsg] = useState();
+  const [txId, setTxId] = useState('');
+
 
   const userAddress = useSelector((state) => state.login.address)
   const FileUploadAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
@@ -16,9 +19,10 @@ const UploadDoc = () => {
 
     // Handelling file upload and hashing  ///////////////////
 
-    setFile(e.target.files[0])
-    console.log("state: ",e.target.files[0])
-    const fileContents = await readToText(e.target.files[0])
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const file = data.get("message");
+    const fileContents = await readToText(file);
     const hash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(fileContents))
     console.log("hash", hash)
 
@@ -65,7 +69,11 @@ const UploadDoc = () => {
         // console.log(receipt.transactionHash);
         // user needs to save txHash value for verification
         const txHash = receipt.transactionHash;
-        console.log("The transaction hash is ", txHash);
+        // console.log("The transaction hash is ", txHash);
+        let txn_encoded = window.btoa(txHash); // encode a string
+         // decode the string
+        console.log("TransactionId:", txn_encoded)
+        setTxId(txn_encoded);
         // const transaction = await provider.getTransaction(txHash);
         // const data = transaction.data;
 
@@ -79,19 +87,40 @@ const UploadDoc = () => {
     }
   }
 
-
+  
   return (
-    <form> 
-    <div style={{
-      display:'flex',
-      justifyContent:'center', 
-      alignItems: 'center', 
-      height: "100vh",
-    }}>
-      <input type="file" onChange={uploadSig}/>
-      <button type="submit"> Send it </button>
+  <div className="box">
+    <h2 className="header"> Upload Files </h2>
+      <div>
+      <form className="m-4" onSubmit={uploadSig}>
+          <div className="credit-card w-full shadow-lg mx-auto rounded-xl bg-white">
+            <main className="mt-4 p-4">
+              <h1 className="text-xl font-semibold text-gray-700 text-center">
+                Upload Document
+              </h1>
+              <div className="">
+                <div className="my-3">
+                  <input
+                    required
+                    type="file"
+                    name="message"
+                    className="textarea w-full h-24 textarea-bordered focus:ring focus:outline-none"
+                  />
+                </div>
+              </div>
+            </main>
+            <footer className="p-4">
+              <button
+                type="submit"
+                className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
+              >
+                Upload         </button>
+            </footer>
+          </div>
+        </form>
+        {txId && <p>Your Transaction Id {txId}</p>}
+        </div>
     </div>
-  </form>
   )
 };
 
