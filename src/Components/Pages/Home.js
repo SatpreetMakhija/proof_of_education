@@ -43,10 +43,10 @@ const Home = () => {
       </a>
       <div class="btns">
         <a href="https://github.com/SatpreetMakhija/proof_of_education"><i class="fa fa-apple fa-3x"></i> Github</a>
-        <a href="https://docs.ethers.io/v5/"><i class="fa fa-play fa-3x"></i> Ethers</a>
-        <a href="https://docs.soliditylang.org/en/v0.8.13/"><i class="fa fa-play fa-3x"></i> Solidity</a>
-
-        <a href="https://reactjs.org/"><i class="fa fa-windows fa-3x"></i> React</a>
+        
+      </div>
+      <div class="btns">
+      <p>&copy; Jenish Raj Bajracharya & Satpreet Makhija</p>
       </div>
     </div>
 

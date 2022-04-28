@@ -90,16 +90,16 @@ const UploadDoc = () => {
   
   return (
   <div className="box">
-    <h2 className="header"> Upload Files </h2>
-      <div>
+    <div>
       <form className="m-4" onSubmit={uploadSig}>
           <div className="credit-card w-full shadow-lg mx-auto rounded-xl bg-white">
             <main className="mt-4 p-4">
-              <h1 className="text-xl font-semibold text-gray-700 text-center">
-                Upload Document
-              </h1>
+            <div className="logo-h">
+              <h1><span>Upload</span> Document</h1>
+            </div>
+
               <div className="">
-                <div className="my-3">
+                <div class="custom-file-upload">
                   <input
                     required
                     type="file"
@@ -110,15 +110,21 @@ const UploadDoc = () => {
               </div>
             </main>
             <footer className="p-4">
-              <button
-                type="submit"
-                className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
-              >
-                Upload         </button>
+              <button type="submit" className="btn btn-success">
+                Upload 
+              </button>
+
             </footer>
           </div>
         </form>
-        {txId && <p>Your Transaction Id {txId}</p>}
+        {txId && 
+        <div id = "upload-noti">
+          <div className="login-noti">
+              <h5>Transcation Success!!</h5>
+        </div>
+          <h6>Your Transaction Id {txId}</h6>
+          <p>Save this for verification!</p>
+        </div>}
         </div>
     </div>
   )

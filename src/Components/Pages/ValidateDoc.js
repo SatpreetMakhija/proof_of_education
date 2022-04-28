@@ -93,45 +93,50 @@ export default function VerifyMessage() {
   };
 
   return (
-    <form className="m-4" onSubmit={handleVerification}>
-      <div className="credit-card w-full shadow-lg mx-auto rounded-xl bg-white">
-        <main className="mt-4 p-4">
-          <h1 className="text-xl font-semibold text-gray-700 text-center">
-            Verify signature
-          </h1>
-          <div className="">
-            <div className="my-3">
-              <input
-                required
-                type="file"
-                name="message"
-                className="textarea w-full h-24 textarea-bordered focus:ring focus:outline-none"
-              />
+    <div className="box">
+      <div className="box-in">
+        <form className="m-4" onSubmit={handleVerification}>
+          <div className="credit-card w-full shadow-lg mx-auto rounded-xl bg-white">
+            <main className="mt-4 p-4">
+            <div className="logo-h">
+              <h1><span>Validate</span> Document</h1>
             </div>
-            <div className="my-3">
-              <textarea
-                required
-                type="text"
-                name="txHash"
-                className="textarea w-full h-24 textarea-bordered focus:ring focus:outline-none"
-                placeholder="txHash"
-              />
-            </div>
+              <div className="">
+                <div className="custom-file-upload">
+                  <input
+                    required
+                    type="file"
+                    name="message"
+                    className="textarea w-full h-24 textarea-bordered focus:ring focus:outline-none"
+                  />
+                </div>
+                <div className="my-3">
+                  <textarea
+                    required
+                    type="text"
+                    name="txHash"
+                    className="text-area"
+                    placeholder="txHash"
+                  />
+                </div>
+              </div>
+            </main>
+            <footer className="p-4">
+              <button
+                type="submit"
+                className="btn btn-success"
+              >
+                Verify signature
+              </button>
+            </footer>
+            
           </div>
-        </main>
-        <footer className="p-4">
-          <button
-            type="submit"
-            className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
-          >
-            Verify signature
-          </button>
-        </footer>
+        </form>
         <div className="p-4 mt-4">
-          <ErrorMessage message={error} />
-          <SuccessMessage message={successMsg} />
+              <ErrorMessage message={error} />
+              <SuccessMessage message={successMsg} />
+            </div>
         </div>
-      </div>
-    </form>
+    </div>
   );
 }
