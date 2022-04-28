@@ -1659,3 +1659,7 @@ input {
 .logo-h h1  span {
   color: #71c55d;
 }
+
+#btn-success{
+  background-color: #71c55d !important;
+}
