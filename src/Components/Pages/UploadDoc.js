@@ -14,7 +14,12 @@ const UploadDoc = () => {
 
 
   const userAddress = useSelector((state) => state.login.address)
-  const FileUploadAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+  // const FileUploadAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3"; // local host
+
+  const FileUploadAddress = "0x497A8AA7745dE7E65Fa9c3c9c58028928ffbFBFb"; //ropsten
+
+
+
   async function uploadSig(e) {
 
     // Handelling file upload and hashing  ///////////////////

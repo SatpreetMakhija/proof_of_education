@@ -4,7 +4,10 @@ import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
 import FileUpload from "../../artifacts/contracts/FileUpload.sol/FileUpload.json"
 
-const FileUploadAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+// const FileUploadAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3"; //local net
+
+const FileUploadAddress = "0x497A8AA7745dE7E65Fa9c3c9c58028928ffbFBFb";  //ropsten net
+
 
 
 const verifyMessage = async (_message, _txHash ) => {
@@ -115,7 +118,7 @@ export default function VerifyMessage() {
                     required
                     type="text"
                     name="txHash"
-                    className="text-area"
+                    class="form-control" id="exampleInputPassword1"
                     placeholder="txHash"
                   />
                 </div>
