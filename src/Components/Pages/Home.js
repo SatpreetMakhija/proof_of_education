@@ -5,27 +5,27 @@ import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-    const [greeting, setGreeting] = useState('')
+  //   const [greeting, setGreeting] = useState('')
 
-    const greeterAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-    async function fetchGreeting() {
-    //checks whether Metamask is installed on the browser or not.
-    if (typeof window.ethereum !== "undefined") {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const contract = new ethers.Contract(
-        greeterAddress,
-        Greeter.abi,
-        provider
-      );
-      try {
-        const data = await contract.greet();
-        setGreeting(data);
-        console.log("data: ", data);
-      } catch (err) {
-        console.log("Error: ", err);
-      }
-    }
-  }
+  //   const greeterAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+  //   async function fetchGreeting() {
+  //   //checks whether Metamask is installed on the browser or not.
+  //   if (typeof window.ethereum !== "undefined") {
+  //     const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //     const contract = new ethers.Contract(
+  //       greeterAddress,
+  //       Greeter.abi,
+  //       provider
+  //     );
+  //     try {
+  //       const data = await contract.greet();
+  //       setGreeting(data);
+  //       console.log("data: ", data);
+  //     } catch (err) {
+  //       console.log("Error: ", err);
+  //     }
+  //   }
+  // }
     return (
       <main id="main">
     <section id="hero">
