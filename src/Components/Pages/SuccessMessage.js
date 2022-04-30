@@ -1,3 +1,4 @@
+import React from "react";
 export default function SuccessMessage({ message }) {
 	if (!message) return null;
   
