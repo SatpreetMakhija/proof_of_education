@@ -3,7 +3,8 @@ import { useState, useRef } from "react";
 import { ethers } from "ethers";
 import { useSelector } from "react-redux";
 import ErrorMessage from "./ErrorMessage";
-import FileUpload from "../../artifacts/contracts/FileUpload.sol/FileUpload.json"
+// import FileUpload from "../../artifacts/contracts/FileUpload.sol/FileUpload.json"
+import FileUpload from "../../utils/FileUpload.json"
 var txDecoder = require('ethereum-tx-decoder');
 
 
