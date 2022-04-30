@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useRef } from "react";
 import { ethers } from "ethers";
 import ErrorMessage from "./ErrorMessage";
