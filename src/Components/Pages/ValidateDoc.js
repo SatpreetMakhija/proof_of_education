@@ -3,8 +3,8 @@ import { useState, useRef } from "react";
 import { ethers } from "ethers";
 import ErrorMessage from "./ErrorMessage";
 import SuccessMessage from "./SuccessMessage";
-import FileUpload from "../../artifacts/contracts/FileUpload.sol/FileUpload.json"
-
+// import FileUpload from "../../artifacts/contracts/FileUpload.sol/FileUpload.json"
+import FileUpload from "../../utils/FileUpload.json"
 // const FileUploadAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3"; //local net
 
 const FileUploadAddress = "0x497A8AA7745dE7E65Fa9c3c9c58028928ffbFBFb";  //ropsten net
