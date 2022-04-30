@@ -7,7 +7,6 @@ import FileUpload from "../../artifacts/contracts/FileUpload.sol/FileUpload.json
 var txDecoder = require('ethereum-tx-decoder');
 
 
-
 const UploadDoc = () => {
   const [error, setError] = useState();
   const [successMsg, setSuccessMsg] = useState();
